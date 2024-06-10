@@ -1,4 +1,15 @@
+toss:
+  url:
+    base: https://api.tosspayments.com
+    payment-prefix: /v1/payments
+    confirm-payment: /confirm
+    cancel-payment: /%s/cancel
+  secret: test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6
+---
 spring:
+  config:
+    activate:
+      on-profile: local
   h2:
     console:
       enabled: true
@@ -19,14 +30,38 @@ jwt:
   secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno
   expired-period: 3600000 # 1000 * 60 * 60 = 1시간
 
-toss:
-  url:
-    base: https://api.tosspayments.com
-    payment-prefix: /v1/payments
-    confirm-payment: /confirm
-    cancel-payment: /%s/cancel
-  secret: test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6
-
 jasypt:
   encryptor:
     password: paymentKeyPassword
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  h2:
+    console:
+      enabled: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.8:3306/roomescape
+    username: root
+    password: ENC(q4HW06mHF2/lwqmpxScsuH95I9W5Lxxm)
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: never
+
+jwt:
+  secret: ENC(HnX4l8vOQR6Z8Uc+00mES9eohjJmZzlv)
+  expired-period: 3600000 # 1000 * 60 * 60 = 1시간
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

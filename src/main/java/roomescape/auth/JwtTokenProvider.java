@@ -23,7 +23,9 @@ public class JwtTokenProvider {
     private final String jwtSecret;
     private final long expiredPeriod;
 
-    public JwtTokenProvider(@Value("${jwt.secret}") String jwtSecret, @Value("${jwt.expired-period}") long expiredPeriod) {
+    public JwtTokenProvider(@Value("${jwt.secret}") String jwtSecret,
+                            @Value("${jwt.expired-period}") long expiredPeriod
+    ) {
         this.jwtSecret = jwtSecret;
         this.expiredPeriod = expiredPeriod;
     }
