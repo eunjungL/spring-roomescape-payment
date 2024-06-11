@@ -51,14 +51,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
       ddl-auto: none
   sql:
     init:
       mode: never
 
 jwt:
-  secret: ENC(HnX4l8vOQR6Z8Uc+00mES9eohjJmZzlv)
+  secret: ENC(Qq6dDgtHHedIgKhJ6rb2xgNKV6ajBGXGun4LEalgG6A95vht5yz1IFpbOBKWTUTpIoOLPVINYj8nzVXh6I7syfaIBVs6+NqPIVe9Osah56ExleTE01WVmFvDXI7fdl+Kke57fQyTecD0EeuHGi/f1FSKVL5dP7oF83eZk4fQLHuNhdtBhF32GgfJP0dMg229F8jjAQGYgc0wNUQ70t+xEMQRY17YxPO7fvAKl3ssA4JL8iY9+yacxMt0Xpy9PRbyIRK1oeUxZTntNLyyeiUquxtbjNUzpIbE3v6/t9ghyp0ClF4NA1cJuTmZVWJxWn6ZAPaGeoV7JjrWW4USM06V7w==)
   expired-period: 3600000 # 1000 * 60 * 60 = 1시간
 
 jasypt:
